@@ -17,3 +17,8 @@ async def index(request: Request):
 @router.get("/test", response_class=HTMLResponse)
 async def render_test(request: Request):
     return templates.TemplateResponse("test.html", {"request": request})
+
+
+@router.get("/kit", response_class=HTMLResponse)
+async def render_kit(request: Request):
+    return templates.TemplateResponse("kit.html", {"request": request})

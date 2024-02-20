@@ -8,6 +8,7 @@ from app.models.user import User
 from app.schemas.requests import UserCreateRequest, UserUpdatePasswordRequest
 from app.schemas.responses import UserResponse
 
+
 router = APIRouter()
 
 
