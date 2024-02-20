@@ -1,5 +1,5 @@
 from pydantic import BaseModel, ConfigDict, EmailStr
-
+from typing import Optional
 
 class BaseResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
@@ -18,3 +18,5 @@ class AccessTokenResponse(BaseResponse):
 class UserResponse(BaseResponse):
     id: str
     email: EmailStr
+    name: Optional[str]
+    address: Optional[str]

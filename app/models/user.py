@@ -13,4 +13,10 @@ class User(Base):
     email: Mapped[str] = mapped_column(
         String(254), nullable=False, unique=True, index=True
     )
+    name: Mapped[str] = mapped_column(
+        String(254), nullable=True, unique=False, index=False
+    )
+    address: Mapped[str] = mapped_column(
+        String(254), nullable=True, unique=False, index=False
+    )
     hashed_password: Mapped[str] = mapped_column(String(128), nullable=False)
