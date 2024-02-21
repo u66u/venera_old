@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="/static/css/button-styles.css">
     <link rel="stylesheet" href="/static/fonts/Helvetica/fonts.css">
     <link rel="stylesheet" href="/static/css/slider.css">
-    
-    <!-- Add any additional styles for the slider or kit.html specific styles -->
+    <link rel="stylesheet" href="/static/css/purchase-form.css">
+
 </head>
 <body class="KeyNav">
     <div class="container leftSpace">
@@ -25,21 +25,25 @@
             </div>
         </div>
         
-        <!-- Slider for Product Images -->
-        <div class="slider">
-            <img src="static/img.png" class="slider-image">
-            <img src="static/img.png" class="slider-image">
-            <img src="static/img.png" class="slider-image">
-            <!-- Add additional images as needed -->
+        <div class="slider" id="slider">
+            <div class="slider-wrapper"> <!-- New wrapper element -->
+                <img src="/static/img.png" class="slider-image">
+                <img src="/static/img.png" class="slider-image">
+                <img src="/static/img.png" class="slider-image">
+            </div>
+        
+            <div class="slider-controls">
+                <button class="slider-btn prev" aria-label="Previous slide">&#10094;</button>
+                <button class="slider-btn next" aria-label="Next slide">&#10095;</button>
+            </div>
         </div>
         
-        <!-- Product Description -->
+        
         <div class="product-description">
             <h2>Product Description</h2>
             <p>Discover your biological age with our comprehensive blood test kit. Our advanced analysis provides you with a detailed report, helping you to track your health and wellness over time.</p>
         </div>
         
-        <!-- Purchase Form -->
         <form class="purchase-form">
             <input type="email" placeholder="Email" name="email" required>
             <input type="text" placeholder="First Name" name="first_name" required>
@@ -50,10 +54,6 @@
         </form>
         
     </div>
-    
-    <!-- Scripts (if necessary for the slider or form submission) -->
     <script src="/static/js/slider.js"></script>
-    <script src="/static/js/formSubmit.js"></script>
-    
 </body>
 </html>
