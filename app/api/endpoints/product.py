@@ -3,7 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from sqlalchemy.orm import Session
 
-from app.models.product import Product 
+from app.models.product import Product
 from app.schemas.requests import ProductCreateRequest
 from app.schemas.responses import ProductResponse
 from app.api import deps
@@ -20,7 +20,7 @@ async def create_product(
     product = Product(
         name=product_data.name,
         description=product_data.description,
-        price=product_data.price
+        price=product_data.price,
     )
     session.add(product)
     await session.commit()

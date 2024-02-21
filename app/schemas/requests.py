@@ -27,10 +27,10 @@ class ProductCreateRequest(BaseModel):
     description: Optional[str] = None
     price: float
 
-    @validator('price')
+    @validator("price")
     def validate_price(cls, value):
         if value < 0:
-            raise ValueError('Price must be a positive number.')
+            raise ValueError("Price must be a positive number.")
         return value
 
 

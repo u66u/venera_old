@@ -2,10 +2,10 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 
-from app.models.order import Order 
-from app.models.user import User 
+from app.models.order import Order
+from app.models.user import User
 from app.schemas.requests import OrderCreateRequest
-from app.schemas.responses import OrderResponse 
+from app.schemas.responses import OrderResponse
 from app.api import deps
 
 
@@ -22,7 +22,7 @@ async def create_order(
     order = Order(
         user_id=current_user.id,  # Assign user_id to the current user's ID
         product_id=order_data.product_id,
-        comments=order_data.comments
+        comments=order_data.comments,
     )
     session.add(order)
     await session.commit()
@@ -39,12 +39,17 @@ async def delete_order(
     """Delete an order if the current user owns it"""
     result = await session.execute(select(Order).where(Order.id == order_id))
     order = result.scalars().first()
-    
+
     if order is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Order not found")
-    
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Order not found"
+        )
+
     if order.user_id != current_user.id:
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorized to delete this order")
-    
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Not authorized to delete this order",
+        )
+
     await session.delete(order)
     await session.commit()
