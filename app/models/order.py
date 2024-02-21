@@ -1,8 +1,10 @@
 import uuid
-from sqlalchemy import String, Text, DateTime
+from sqlalchemy import String, Text, DateTime, ForeignKey, func
 from sqlalchemy.dialects.postgresql import UUID
 from app.models.base import Base 
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+from app.models.user import User
+from app.models.product import Product
 
 
 class Order(Base):
